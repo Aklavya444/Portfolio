@@ -20,6 +20,12 @@
       background: #0a0a0f;
       color: #ffffff;
       overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+    
+    body.light-mode {
+      background: #f8f9fa;
+      color: #1a1a2e;
     }
     
     .portfolio-wrapper {
@@ -728,6 +734,44 @@
       margin-top: 10px;
     }
     
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 9998;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(0, 245, 255, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .theme-toggle:hover {
+      background: rgba(0, 245, 255, 0.2);
+      border-color: rgba(0, 245, 255, 0.6);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+      transform: scale(1.1);
+    }
+    
+    body.light-mode .theme-toggle {
+      background: rgba(0, 0, 0, 0.08);
+      border-color: rgba(124, 58, 237, 0.3);
+    }
+    
+    body.light-mode .theme-toggle:hover {
+      background: rgba(124, 58, 237, 0.15);
+      border-color: rgba(124, 58, 237, 0.6);
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+    }
+    
     /* Selected Works Section */
     .works-grid {
       display: grid;
@@ -800,138 +844,6 @@
       line-height: 1.6;
     }
     
-    /* Certificates Section */
-    .certificates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
-    }
-    
-    .certificate-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.02);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .certificate-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 40px rgba(0, 245, 255, 0.2);
-    }
-    
-    .certificate-image {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      display: block;
-      object-fit: contain;
-      aspect-ratio: auto;
-    }
-    
-    .certificate-bct {
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .certificate-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-      padding: 20px;
-      text-align: center;
-      color: #ffffff;
-      font-size: 14px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    
-    .certificate-item:hover .certificate-overlay {
-      transform: translateY(0);
-    }
-    
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    
-    .lightbox.active {
-      display: flex;
-    }
-    
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      background: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    
-    .lightbox-image {
-      max-width: 100%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 45px;
-      height: 45px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #ffffff;
-      color: #ffffff;
-      font-size: 28px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      z-index: 10001;
-    }
-    
-    .lightbox-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
-    }
-    
-    .lightbox-title {
-      color: #00f5ff;
-      font-size: 18px;
-      text-align: center;
-      font-weight: 600;
-      margin-top: 20px;
-    }
-    
-    .lightbox-info {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 14px;
-      text-align: center;
-    }
-    
     /* Responsive */
     @media (max-width: 768px) {
       .hero {
@@ -966,6 +878,14 @@
       .orb-1 { width: 200px; height: 200px; }
       .orb-2 { width: 150px; height: 150px; }
       .orb-3 { width: 120px; height: 120px; }
+      
+      .theme-toggle {
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -977,6 +897,274 @@
         flex-direction: column;
         gap: 10px;
       }
+    }
+    
+    /* Light Mode Overrides */
+    body.light-mode .animated-bg {
+      background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f7 100%);
+    }
+    
+    body.light-mode .orb-1 {
+      background: linear-gradient(135deg, #7c3aed, #6366f1);
+      opacity: 0.15;
+    }
+    
+    body.light-mode .orb-2 {
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      opacity: 0.12;
+    }
+    
+    body.light-mode .orb-3 {
+      background: linear-gradient(135deg, #8b5cf6, #a855f7);
+      opacity: 0.1;
+    }
+    
+    body.light-mode .particle {
+      background: #7c3aed;
+      opacity: 0.3;
+    }
+    
+    body.light-mode .particle:nth-child(2) { background: #3b82f6; }
+    body.light-mode .particle:nth-child(4) { background: #06b6d4; }
+    body.light-mode .particle:nth-child(6) { background: #8b5cf6; }
+    body.light-mode .particle:nth-child(8) { background: #a855f7; }
+    body.light-mode .particle:nth-child(10) { background: #7c3aed; }
+    
+    body.light-mode .shape {
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .shape-2 { border-color: rgba(59, 130, 246, 0.2); }
+    body.light-mode .shape-3 { border-color: rgba(168, 85, 247, 0.2); }
+    body.light-mode .shape-4 { border-color: rgba(124, 58, 237, 0.15); }
+    body.light-mode .shape-5 { border-color: rgba(59, 130, 246, 0.15); }
+    
+    body.light-mode .hero-badge {
+      border-color: rgba(124, 58, 237, 0.4);
+      color: #7c3aed;
+      box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .hero-name {
+      background: linear-gradient(135deg, #1f2937 0%, #7c3aed 50%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    body.light-mode .hero-title {
+      color: rgba(26, 26, 46, 0.7);
+    }
+    
+    body.light-mode .hero-location {
+      color: rgba(26, 26, 46, 0.5);
+    }
+    
+    body.light-mode .hero-location .icon {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .scroll-indicator {
+      color: rgba(26, 26, 46, 0.4);
+    }
+    
+    body.light-mode .scroll-line {
+      background: linear-gradient(to bottom, #7c3aed, transparent);
+    }
+    
+    body.light-mode .section-number {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .section-title {
+      color: #1f2937;
+    }
+    
+    body.light-mode .section-subtitle {
+      color: rgba(26, 26, 46, 0.6);
+    }
+    
+    body.light-mode .skill-card {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .skill-card:hover {
+      background: rgba(124, 58, 237, 0.1);
+      border-color: rgba(124, 58, 237, 0.4);
+    }
+    
+    body.light-mode .skill-card::before {
+      background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+    }
+    
+    body.light-mode .skill-icon {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(59, 130, 246, 0.15));
+    }
+    
+    body.light-mode .skill-card-title {
+      color: #1f2937;
+    }
+    
+    body.light-mode .skill-list li {
+      color: rgba(26, 26, 46, 0.7);
+      border-bottom-color: rgba(124, 58, 237, 0.1);
+    }
+    
+    body.light-mode .skill-list li::before {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .experience-timeline::before {
+      background: linear-gradient(to bottom, #7c3aed, #3b82f6, #06b6d4);
+    }
+    
+    body.light-mode .experience-item {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .experience-item:hover {
+      background: rgba(124, 58, 237, 0.1);
+      border-color: rgba(124, 58, 237, 0.4);
+    }
+    
+    body.light-mode .experience-item::before {
+      background: #f8f9fa;
+      border-color: #7c3aed;
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    }
+    
+    body.light-mode .experience-date {
+      background: rgba(124, 58, 237, 0.15);
+      color: #7c3aed;
+    }
+    
+    body.light-mode .experience-company {
+      color: #1f2937;
+    }
+    
+    body.light-mode .experience-role {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .experience-description li {
+      color: rgba(26, 26, 46, 0.75);
+    }
+    
+    body.light-mode .experience-description li::before {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .education-card {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .education-card:hover {
+      background: rgba(124, 58, 237, 0.1);
+      border-color: rgba(124, 58, 237, 0.4);
+    }
+    
+    body.light-mode .education-card::after {
+      background: linear-gradient(90deg, #7c3aed, #3b82f6, #06b6d4);
+    }
+    
+    body.light-mode .education-year {
+      background: rgba(124, 58, 237, 0.15);
+      color: #7c3aed;
+    }
+    
+    body.light-mode .education-degree {
+      color: #1f2937;
+    }
+    
+    body.light-mode .education-institution {
+      color: rgba(26, 26, 46, 0.6);
+    }
+    
+    body.light-mode .education-score {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .personal-item {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .personal-item:hover {
+      border-color: rgba(124, 58, 237, 0.4);
+      background: rgba(124, 58, 237, 0.1);
+    }
+    
+    body.light-mode .personal-label {
+      color: rgba(26, 26, 46, 0.5);
+    }
+    
+    body.light-mode .personal-value {
+      color: #1f2937;
+    }
+    
+    body.light-mode .contact-footer {
+      border-top-color: rgba(124, 58, 237, 0.1);
+    }
+    
+    body.light-mode .contact-title {
+      color: #1f2937;
+    }
+    
+    body.light-mode .contact-subtitle {
+      color: rgba(26, 26, 46, 0.6);
+    }
+    
+    body.light-mode .contact-link {
+      background: rgba(124, 58, 237, 0.08);
+      border-color: rgba(124, 58, 237, 0.2);
+      color: #1f2937;
+    }
+    
+    body.light-mode .contact-link:hover {
+      background: rgba(124, 58, 237, 0.15);
+      border-color: #7c3aed;
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.25);
+    }
+    
+    body.light-mode .contact-link .link-icon {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .footer-text {
+      color: rgba(26, 26, 46, 0.5);
+    }
+    
+    body.light-mode .footer-address {
+      color: rgba(26, 26, 46, 0.4);
+    }
+    
+    body.light-mode .work-card {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    
+    body.light-mode .work-card:hover {
+      border-color: rgba(124, 58, 237, 0.5);
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+    }
+    
+    body.light-mode .work-visual {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(59, 130, 246, 0.08));
+    }
+    
+    body.light-mode .work-category {
+      color: #7c3aed;
+    }
+    
+    body.light-mode .work-title {
+      color: #1f2937;
+    }
+    
+    body.light-mode .work-description {
+      color: rgba(26, 26, 46, 0.65);
     }
   </style>
   <style>body { box-sizing: border-box; }</style>
@@ -1009,7 +1197,7 @@
     <div class="shape shape-4"></div>
     <div class="shape shape-5"></div>
    </div><!-- Cursor Trail Container -->
-   <div class="cursor-trail" id="cursor-trail"></div><!-- Main Content -->
+   <div class="cursor-trail" id="cursor-trail"></div><!-- Theme Toggle Button --> <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌙</button><!-- Main Content -->
    <div class="content"><!-- Hero Section -->
     <section class="hero">
      <div class="hero-badge">
@@ -1019,7 +1207,7 @@
      <p class="hero-title" id="hero-title">Computer Operator | Graphic Designer | Aspiring Developer</p>
      <div class="hero-location"><span><span class="icon">📍</span> Dehradun, Uttarakhand</span> <span><span class="icon">📞</span> <span id="hero-phone">7464870444</span></span> <span><span class="icon">✉️</span> <span id="hero-email">aklavyaverma6@gmail.com</span></span>
      </div>
-     <div class="scroll-indicator"><span> </span>
+     <div class="scroll-indicator"><span>SCROLL</span>
       <div class="scroll-line"></div>
      </div>
     </section><!-- Skills Section -->
@@ -1139,30 +1327,8 @@
        <p class="education-institution">Shree Guru Ram Rai Public School, Dehradun</p>
        <p class="education-score">Secondary Education</p>
       </div>
-     </div><!-- Certificates Section -->
-     <div class="section-header" style="margin-top: 80px;">
-      <h3 class="section-title" style="font-size: clamp(28px, 5vw, 42px);">Professional Certificates</h3>
-      <p class="section-subtitle">Click on certificates to enlarge and verify</p>
      </div>
-     <div class="certificates-grid">
-      <div class="certificate-item" onclick="openLightbox('https://i.postimg.cc/5NyryWt6/Screenshot-. -Drive-(1).jpg', 'SQL Statements &amp; Indexes Certification', 'uniAthena (CIQ, UK)' )"><img src="https://i.postimg.cc/5NyryWt6/Screenshot-. -Drive-(1).jpg" alt="SQL Certification" class="certificate-image" loading="lazy" onerror="console.error('SQL cert image failed:', this.src); this.style.background='#333'; this.alt='Image unavailable';">
-       <div class="certificate-overlay">
-        🔍 Click to Enlarge
-       </div>
-      </div>
-      <div class="certificate-item" onclick="openLightbox('https://i.postimg.cc/fTyPyQbs/Screenshot-. -Files-by-Google-(1).jpg', 'BCC Diploma Certificate', 'Best Computer Technology')"><img src="https://i.postimg.cc/fTyPyQbs/Screenshot-. -Files-by-Google-(1).jpg" alt="BCC Diploma" class="certificate-image certificate-bct" loading="lazy" onerror="console.error('BCC cert image failed:', this.src); this.style.background='#333'; this.alt='Image unavailable';">
-       <div class="certificate-overlay">
-        🔍 Click to Enlarge
-       </div>
-      </div>
-     </div>
-    </section><!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox">
-     <div class="lightbox-content"><button class="lightbox-close" onclick="closeLightbox()">✕</button> <img id="lightbox-image" class="lightbox-image" src="" alt="Certificate">
-      <h3 class="lightbox-title" id="lightbox-title"></h3>
-      <p class="lightbox-info" id="lightbox-info"></p>
-     </div>
-    </div><!-- Selected Works Section -->
+    </section><!-- Selected Works Section -->
     <section class="section">
      <div class="section-header">
       <div class="section-number">
@@ -1357,6 +1523,22 @@
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
     
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      themeToggle.textContent = '☀️';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLightMode = document.body.classList.contains('light-mode');
+      localStorage.setItem('portfolio-theme', isLightMode ? 'light' : 'dark');
+      themeToggle.textContent = isLightMode ? '☀️' : '🌙';
+    });
+    
     // Element SDK Integration
     async function onConfigChange(config) {
       const heroName = document.getElementById('hero-name');
@@ -1486,47 +1668,6 @@
       // Fallback: apply default config
       onConfigChange(defaultConfig);
     }
-    
-    // Lightbox functionality
-    function openLightbox(imageSrc, title, institution) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = document.getElementById('lightbox-image');
-      const lightboxTitle = document.getElementById('lightbox-title');
-      const lightboxInfo = document.getElementById('lightbox-info');
-      
-      lightboxImage.src = imageSrc;
-      lightboxTitle.textContent = title;
-      lightboxInfo.textContent = institution;
-      lightbox.classList.add('active');
-      
-      // Prevent scrolling on body
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLightbox() {
-      const lightbox = document.getElementById('lightbox');
-      lightbox.classList.remove('active');
-      
-      // Re-enable scrolling on body
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Close lightbox when clicking outside the content
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-      lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-    }
-    
-    // Close lightbox on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d0e5a0323709788',t:'MTc3MTU5NDE1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d35d7d43718e0d2',t:'MTc3MjAwODI1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
